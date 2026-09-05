@@ -188,7 +188,7 @@ def run(origin, name=None, max_pages=30):
         else:
             ok("A3", f"robots.txt allows all {len(ANSWER_BOTS)} answer bots")
         info("A3", "Content-Signal declared" if "content-signal" in robots.lower() else "no Content-Signal line (optional rights signal)")
-    st, _, _ = fetch(origin + "/__agent_visible_probe__")
+    st, _, _ = fetch(origin + "/__site_for_agents_probe__")
     if st in (404, 410):
         ok("A4", f"unknown path returns {st}")
     else:
@@ -336,13 +336,13 @@ def run(origin, name=None, max_pages=30):
         info("F3", "no markdown variant (optional; HTML that passes B2 is enough)")
 
     # --- G. Recoverable ---
-    st, hd, b = fetch(origin + "/__agent_visible_probe__", accept="*/*")
+    st, hd, b = fetch(origin + "/__site_for_agents_probe__", accept="*/*")
     same_origin_links = len(re.findall(rf"(?:{re.escape(origin)}|\]\(/|href=\"/)", b))
     if st in (404, 410) and same_origin_links >= 2:
         ok("G1", f"404 body for curl-like clients links {same_origin_links} entry points")
     else:
         no("G1", f"404 for Accept */* is {st} with {same_origin_links} same-origin links; a dead link should hand the agent a way back")
-    st, _, b = fetch(origin + "/__agent_visible_probe__", accept="text/html")
+    st, _, b = fetch(origin + "/__site_for_agents_probe__", accept="text/html")
     t404 = parse_html(b)["text"]
     says_404 = bool(re.search(r"not found|doesn.t exist|does not exist|no such page|\b404\b", t404, re.I))
     # Sites that reuse a masthead H1 on every page still pass: what matters is
