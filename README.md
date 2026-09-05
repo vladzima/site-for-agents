@@ -1,7 +1,7 @@
 # site-for-agents
 
-An agent skill that makes a personal website findable, readable, and quotable
-by AI agents and answer engines (ChatGPT search, Claude, Perplexity, Google AI
+An agent skill that makes a personal website **findable, readable, and quotable
+by AI agents and answer engines** (ChatGPT search, Claude, Perplexity, Google AI
 Mode, coding agents).
 
 Most advice sold as "GEO" does not move citation rate, but what actually does, per the
