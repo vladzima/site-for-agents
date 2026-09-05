@@ -16,7 +16,7 @@ the schema validator, the traps that cost real time (root `index.md`
 hijacking `/`, 404 shells that flash the homepage, testing the alias host
 instead of the canonical one), and a stdlib-only checker.
 
-![Eight steps: fact source, identity line, entity page, structured data, freshness, discovery files, recovery, off-site. llms.txt is step six.](docs/diagrams/order-of-work.png)
+![Nine steps: fact source, identity line, entity page, structured data, freshness, discovery files, recovery, off-site, WebMCP tools. llms.txt is step six.](docs/diagrams/order-of-work.png)
 
 The engines that cite you never run your JavaScript. Only coding agents send
 `Accept: text/markdown`; answer bots fetch the HTML URL and read what is in
