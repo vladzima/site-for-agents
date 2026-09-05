@@ -63,8 +63,7 @@ Exit code is 1 when any check fails, so it can gate a deploy.
 
 Five personal sites, same 17 gradable checks, 2026-09-05. The four that
 fail are well-built sites by well-known engineers; what they lack is an
-entity page, Person JSON-LD, and an honest `lastmod`. Dark variants of all
-three figures are in `docs/diagrams/` for posts and slides.
+entity page, Person JSON-LD, and an honest `lastmod`.
 
 ## Scope
 
