@@ -16,6 +16,14 @@ the schema validator, the traps that cost real time (root `index.md`
 hijacking `/`, 404 shells that flash the homepage, testing the alias host
 instead of the canonical one), and a stdlib-only checker.
 
+![Eight steps: fact source, identity line, entity page, structured data, freshness, discovery files, recovery, off-site. llms.txt is step six.](docs/diagrams/order-of-work.png)
+
+The engines that cite you never run your JavaScript. Only coding agents send
+`Accept: text/markdown`; answer bots fetch the HTML URL and read what is in
+the body. A single-page app shell gives them nothing.
+
+![Sequence: a browser gets HTML plus JS and fills the page; an answer bot gets the same HTML, runs no JS, and cites only what the server sent.](docs/diagrams/two-fetches.png)
+
 ## Install
 
 ```bash
@@ -50,6 +58,13 @@ Output is a scorecard, one line per check with the evidence:
 | H Off-site | Does the web agree? Manual: bios on GitHub, LinkedIn, X, blog; backlinks; author names on works |
 
 Exit code is 1 when any check fails, so it can gate a deploy.
+
+![Stacked bars of passed and failed checks for arbatov.dev (17/0), swyx.io (13/4), simonwillison.net (9/7), jvns.ca (9/7), rauchg.com (6/10).](docs/diagrams/scorecard.png)
+
+Five personal sites, same 17 gradable checks, 2026-09-05. The four that
+fail are well-built sites by well-known engineers; what they lack is an
+entity page, Person JSON-LD, and an honest `lastmod`. Dark variants of all
+three figures are in `docs/diagrams/` for posts and slides.
 
 ## Scope
 

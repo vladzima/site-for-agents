@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The same URL, fetched by a browser and by an answer bot</title>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-paper: #f5f5f2; --color-ink: #0b0b0b; --color-muted: #5f5f5a; --color-accent: #c8441a;
+      --font-sans: 'Geist', 'Atlas Grotesk', system-ui, sans-serif;
+      --font-mono: 'Geist Mono', ui-monospace, monospace;
+    }
+    body { font-family: var(--font-sans); background: var(--color-paper); color: var(--color-ink); min-height: 100vh;
+      display: flex; align-items: center; justify-content: center; padding: 3rem 2rem; }
+    .frame { max-width: 1240px; width: 100%; }
+    .eyebrow { font-family: var(--font-mono); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-muted); margin-bottom: 0.5rem; }
+    h1 { font-family: var(--font-sans); font-size: clamp(1.5rem, 2.4vw + 0.75rem, 2rem); font-weight: 300; letter-spacing: -0.02em; line-height: 1.15; color: var(--color-ink); margin-bottom: 1.5rem; }
+    svg { width: 100%; min-width: 900px; display: block; }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <p class="eyebrow">Sequence · site-for-agents</p>
+    <h1>The same URL, fetched by a browser and by an answer bot</h1>
+    <svg viewBox="0 0 1000 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="twofetch-title twofetch-desc">
+      <title id="twofetch-title">What a browser sees versus what an answer bot sees</title>
+      <desc id="twofetch-desc">Sequence diagram of two fetches of the same about page: a browser receives HTML plus JavaScript and fills the page client-side, while an answer bot receives the same HTML but runs no JavaScript, so a server-rendered page is citable and a single-page-app shell is empty.</desc>
+      <defs>
+        <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#5f5f5a"/></marker>
+        <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#c8441a"/></marker>
+        <marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2e5aa8"/></marker>
+      </defs>
+      <rect width="100%" height="100%" fill="#f5f5f2"/>
+      <line x1="160" y1="68" x2="160" y2="420" stroke="rgba(11,11,11,0.20)" stroke-width="1" stroke-dasharray="3,3"/>
+      <line x1="500" y1="68" x2="500" y2="336" stroke="rgba(11,11,11,0.20)" stroke-width="1" stroke-dasharray="3,3"/>
+      <line x1="840" y1="68" x2="840" y2="336" stroke="rgba(11,11,11,0.20)" stroke-width="1" stroke-dasharray="3,3"/>
+      <line x1="160" y1="112" x2="496" y2="112" stroke="#5f5f5a" stroke-width="1" marker-end="url(#arrow)"/>
+      <rect x="296" y="92" width="64" height="12" rx="2" fill="#f5f5f2"/>
+      <text x="328" y="101" fill="#6f6f69" font-size="8" font-weight="400" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em" >GET /about</text>
+      <line x1="504" y1="148" x2="160" y2="148" stroke="#5f5f5a" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#arrow)"/>
+      <rect x="292" y="128" width="80" height="12" rx="2" fill="#f5f5f2"/>
+      <text x="332" y="137" fill="#6f6f69" font-size="8" font-weight="400" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em" >200 HTML + JS</text>
+      <path d="M 164 176 H 200 A 8 8 0 0 1 208 184 V 200 A 8 8 0 0 1 200 208 H 164" fill="none" stroke="#5f5f5a" stroke-width="1" marker-end="url(#arrow)"/>
+      <text x="216" y="196" fill="#6f6f69" font-size="8" font-weight="400" font-family="'Geist Mono', monospace" text-anchor="start" letter-spacing="0.06em" >JS RUNS, DOM FILLS</text>
+      <rect x="156" y="112" width="8" height="112" fill="rgba(11,11,11,0.06)" stroke="#5f5f5a" stroke-width="0.8"/>
+      <line x1="840" y1="272" x2="504" y2="272" stroke="#5f5f5a" stroke-width="1" marker-end="url(#arrow)"/>
+      <rect x="640" y="252" width="64" height="12" rx="2" fill="#f5f5f2"/>
+      <text x="672" y="261" fill="#6f6f69" font-size="8" font-weight="400" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em" >GET /about</text>
+      <line x1="496" y1="308" x2="840" y2="308" stroke="#c8441a" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#arrow-accent)"/>
+      <rect x="613" y="288" width="111" height="12" rx="2" fill="#f5f5f2"/>
+      <text x="668" y="297" fill="#c8441a" font-size="8" font-weight="400" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em" >200 HTML, NO JS RUN</text>
+      <rect x="836" y="272" width="8" height="64" fill="rgba(11,11,11,0.06)" stroke="#5f5f5a" stroke-width="0.8"/>
+      <rect x="520" y="340" width="336" height="76" rx="4" fill="rgba(11,11,11,0.02)" stroke="rgba(11,11,11,0.22)" stroke-width="1"/>
+      <rect x="520" y="340" width="40" height="16" rx="2" fill="#f5f5f2" stroke="rgba(11,11,11,0.22)" stroke-width="1"/>
+      <text x="540" y="352" fill="#5f5f5a" font-size="8" font-weight="400" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.12em" >ALT</text>
+      <text x="532" y="374" fill="#0b0b0b" font-size="8" font-weight="400" font-family="'Geist Mono', monospace" text-anchor="start" letter-spacing="0.02em" >[server-rendered]  text + JSON-LD in body → citable</text>
+      <line x1="528" y1="384" x2="848" y2="384" stroke="rgba(11,11,11,0.20)" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="532" y="402" fill="#c8441a" font-size="8" font-weight="400" font-family="'Geist Mono', monospace" text-anchor="start" letter-spacing="0.02em" >[SPA shell]  &lt;div id="root"&gt;&lt;/div&gt; → nothing to cite</text>
+      <rect x="72" y="24" width="176" height="44" rx="6" fill="#f5f5f2" />
+      <rect x="72" y="24" width="176" height="44" rx="6" fill="#ffffff" stroke="#0b0b0b" stroke-width="1" />
+      <text x="160" y="44" fill="#0b0b0b" font-size="12" font-weight="500" font-family="'Geist', 'Atlas Grotesk', sans-serif" text-anchor="middle" >Browser</text>
+      <text x="160" y="58" fill="#6f6f69" font-size="7" font-weight="400" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em" >USER</text>
+      <rect x="412" y="24" width="176" height="44" rx="6" fill="#f5f5f2" />
+      <rect x="412" y="24" width="176" height="44" rx="6" fill="#ffffff" stroke="#0b0b0b" stroke-width="1" />
+      <text x="500" y="44" fill="#0b0b0b" font-size="12" font-weight="500" font-family="'Geist', 'Atlas Grotesk', sans-serif" text-anchor="middle" >your-site.dev/about</text>
+      <text x="500" y="58" fill="#6f6f69" font-size="7" font-weight="400" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em" >ORIGIN</text>
+      <rect x="752" y="24" width="176" height="44" rx="6" fill="#f5f5f2" />
+      <rect x="752" y="24" width="176" height="44" rx="6" fill="rgba(200,68,26,0.08)" stroke="#c8441a" stroke-width="1" />
+      <text x="840" y="44" fill="#0b0b0b" font-size="12" font-weight="500" font-family="'Geist', 'Atlas Grotesk', sans-serif" text-anchor="middle" >Answer bot</text>
+      <text x="840" y="58" fill="#6f6f69" font-size="7" font-weight="400" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em" >OAI-SEARCHBOT · CLAUDE-SEARCHBOT</text>
+      <text x="24" y="96" fill="#5f5f5a" font-size="8" font-weight="400" font-family="'Geist Mono', monospace" text-anchor="start" letter-spacing="0.12em" >A</text>
+      <text x="24" y="256" fill="#5f5f5a" font-size="8" font-weight="400" font-family="'Geist Mono', monospace" text-anchor="start" letter-spacing="0.12em" >B</text>
+      <line x1="30" y1="456" x2="970" y2="456" stroke="rgba(11,11,11,0.12)" stroke-width="0.8"/>
+      <text x="30" y="472" fill="#5f5f5a" font-size="8" font-weight="400" font-family="'Geist Mono', monospace" text-anchor="start" letter-spacing="0.14em" >LEGEND</text>
+      <line x1="120" y1="468" x2="152" y2="468" stroke="#5f5f5a" stroke-width="1" marker-end="url(#arrow)"/>
+      <text x="160" y="472" fill="#5f5f5a" font-size="8" font-weight="400" font-family="'Geist Mono', monospace" text-anchor="start" letter-spacing="0.06em" >REQUEST</text>
+      <line x1="260" y1="468" x2="292" y2="468" stroke="#5f5f5a" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#arrow)"/>
+      <text x="300" y="472" fill="#5f5f5a" font-size="8" font-weight="400" font-family="'Geist Mono', monospace" text-anchor="start" letter-spacing="0.06em" >RESPONSE</text>
+      <line x1="410" y1="468" x2="442" y2="468" stroke="#c8441a" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#arrow-accent)"/>
+      <text x="450" y="472" fill="#5f5f5a" font-size="8" font-weight="400" font-family="'Geist Mono', monospace" text-anchor="start" letter-spacing="0.06em" >THE FETCH THAT DECIDES CITATION</text>
+      <text x="970" y="472" fill="#6f6f69" font-size="8" font-weight="400" font-family="'Geist Mono', monospace" text-anchor="end" >No major answer bot executes JavaScript (Vercel 2024; Lantern 2026)</text>
+    </svg>
+  </div>
+</body>
+</html>
