@@ -120,13 +120,23 @@ https://www.wikidata.org/wiki/Wikidata:Notability
 `.well-known/agent-card.json` (A2A), `/.well-known/mcp-server`, `ai.txt`
 describe services, not people. No answer engine reads them for entity facts.
 
-## 16. WebMCP is actuation, not discovery
+## 16. WebMCP: in-browser tools, Answer and Action
 
-Chrome's proposal (origin trial from Chrome 149; doc updated 2026-08-07) lets
-a page register JavaScript tools or annotate forms so an in-browser agent
-calls a tool instead of clicking through the DOM. Chrome's own limits:
-"primarily designed for local browser workflows with a human in the loop";
-"clients and browsers must visit a site directly to know if it has callable
-tools". It is JS-only, so answer engines never see it. Relevant only to pages
-with an action (booking, checkout, support forms).
-https://developer.chrome.com/docs/ai/webmcp
+Chrome's proposal (origin trial from Chrome 149; imperative API doc updated
+2026-09-01) lets a page register JavaScript tools or annotate forms so an
+in-browser agent calls a tool instead of scraping the DOM. Chrome's own
+limits: "primarily designed for local browser workflows with a human in the
+loop"; "clients and browsers must visit a site directly to know if it has
+callable tools". It is JS-only, so answer engines never see it and it does
+not move citation.
+
+It still belongs on a personal site, for two reasons. The webmcp.com
+directory (522 sites, 3,387 tools, Sep 2026) classifies 44% of indexed tools
+as **Answer** (read-only: profile, search, details) and lists personal
+portfolios with `get_profile` / `list_projects` / `get_contact`; a listing is
+an independent, crawled mention with a backlink. And a Chrome agent on the
+page gets structured facts instead of a DOM scrape. Action tools
+(`book_call`, `request_consultation`) apply only where the site already
+offers that action to humans; mark committing actions `consequentialHint`.
+https://developer.chrome.com/docs/ai/webmcp/imperative-api ;
+https://webmcp.com ; https://webmcp.com/api/directory.json

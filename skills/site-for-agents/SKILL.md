@@ -66,12 +66,28 @@ Evidence and sources: [references/levers.md](references/levers.md).
 
    Submit the sitemap in Google Search Console and Bing Webmaster Tools;
    Bing feeds ChatGPT search.
+9. **WebMCP tools** (Chrome origin trial, `document.modelContext.registerTool`).
+   These serve an agent that is already on the page in a browser; they do
+   not affect crawlers or citation. Register them after the fact source
+   exists, never before, and render them from it:
+   - **Answer tools** (read-only, `readOnlyHint: true`) for every personal
+     site: `get_profile`, `list_projects` (filter by group or keyword),
+     `get_experience`, `get_contact`. Each returns JSON built from the fact
+     source, so it cannot drift from the page.
+   - **Action tools** only where the site already has the action for humans:
+     `book_call` for a booking link, `request_consultation` for a contact
+     form, `subscribe` for a newsletter. Mark `consequentialHint: true` on
+     anything that commits the user (booking, payment); the browser then
+     asks for confirmation. Never invent an action the site does not offer.
+   - Register on every page that has the facts, including static ones
+     without the app bundle (bundle the same module and inline it).
+   - List the site at webmcp.com (scanner on the homepage, then "Request
+     listing"); the directory is crawled and counts as an independent
+     mention with a backlink. Example module and test shim:
+     [references/webmcp-tools.md](references/webmcp-tools.md).
 
 Skip unless the site exposes a service: `.well-known` agent cards, MCP
-discovery, `ai.txt`. WebMCP (Chrome, `navigator.modelContext` tools and
-annotated forms) is for in-browser actuation with a user present, not for
-being found or cited; add it only to a page with an action, such as a
-booking form. Skip Wikidata until independent references exist.
+discovery, `ai.txt`. Skip Wikidata until independent references exist.
 `Accept: text/markdown` twins are optional; if served, send
 `Vary: Accept` so the CDN does not hand one variant to the other client.
 
@@ -99,3 +115,4 @@ not the alias. Run it after every deploy that touches routing.
 | Build-output tests fail after a content edit | Tests read a stale `dist/` | `rm -rf dist && build` before the test run |
 | Browsers sometimes get markdown, agents HTML | Negotiated responses cached without `Vary: Accept` | Add `Vary: Accept` to both variants |
 | "Contact on Telegram" points at a channel | Link labelled by platform, not by purpose | Separate `contact` and `channel` links; label the channel's language |
+| WebMCP tools missing on `/about` | Static page has no app bundle; tools were registered only in the SPA entry | Inline a bundled copy of the tool module on static pages |
