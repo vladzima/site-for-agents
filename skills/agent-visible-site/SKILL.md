@@ -34,7 +34,11 @@ Evidence and sources: [references/levers.md](references/levers.md).
    `Name — role. N years; ex-A, B; current role at C.` Used verbatim in
    `<meta description>`, OG, `Person.description`, `llms.txt` blockquote,
    hero. The definitional form `Name is a … based in …` opens the entity page.
-3. **Entity page** (`/about`). Server-rendered, no JS required. Order:
+3. **Entity page** (`/about`). Served as HTML with the text already in it;
+   answer bots fetch the HTML URL with a browser-like `Accept` and run no JS.
+   A markdown twin or `llms.txt` does not substitute: only coding agents send
+   `Accept: text/markdown`. Title, description, canonical, and JSON-LD must
+   be in the served HTML, not set by client code. Order:
    definition; current work with numbers; dated career timeline; works
    grouped, each "by Name"; writing; education and languages; contact; a
    short Q&A whose H3s are the literal questions agents get asked; visible
@@ -60,10 +64,13 @@ Evidence and sources: [references/levers.md](references/levers.md).
    blog bio. Tag the employer's handle where the platform links it
    (`@company` on X and GitHub). Each profile links back; `sameAs` lists each.
 
+   Submit the sitemap in Google Search Console and Bing Webmaster Tools;
+   Bing feeds ChatGPT search.
+
 Skip unless the site exposes a service: `.well-known` agent cards, MCP
 discovery, `ai.txt`. Skip Wikidata until independent references exist.
-`Accept: text/markdown` twins are optional; HTML that passes the readability
-check is enough.
+`Accept: text/markdown` twins are optional; if served, send
+`Vary: Accept` so the CDN does not hand one variant to the other client.
 
 ## Verify
 
@@ -87,4 +94,5 @@ not the alias. Run it after every deploy that touches routing.
 | Everything passes on `www`, fails on apex | Tested the alias; canonical 308s with a stub body | Flip the primary host; test the canonical |
 | Schema validator rejects `hasOccupation` | `OrganizationRole.memberOf` is not a property | Past roles under `alumniOf` as `Role`; current job as `Occupation` |
 | Build-output tests fail after a content edit | Tests read a stale `dist/` | `rm -rf dist && build` before the test run |
+| Browsers sometimes get markdown, agents HTML | Negotiated responses cached without `Vary: Accept` | Add `Vary: Accept` to both variants |
 | "Contact on Telegram" points at a channel | Link labelled by platform, not by purpose | Separate `contact` and `channel` links; label the channel's language |
