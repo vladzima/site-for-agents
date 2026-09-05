@@ -23,7 +23,7 @@ ANSWER_BOTS = [
     "OAI-SearchBot", "ChatGPT-User", "Claude-SearchBot", "Claude-User",
     "PerplexityBot", "Perplexity-User", "Googlebot", "Bingbot",
 ]
-UA = "Mozilla/5.0 (compatible; agent-visible-site check; +https://github.com/vladzima/agent-visible-site)"
+UA = "Mozilla/5.0 (compatible; site-for-agents check; +https://github.com/vladzima/site-for-agents)"
 MIN_TEXT = 500          # chars of visible text a content page must have without JS
 ENTITY_PATHS = ["/about", "/about-me", "/bio", "/cv", "/resume", "/me"]
 
@@ -378,7 +378,7 @@ def main():
     if a.json:
         print(json.dumps({"name": name, "results": [dict(zip(("status", "check", "detail"), r)) for r in results]}, indent=2))
         return
-    print(f"agent-visible-site — {a.origin} — entity: {name or '?'}\n")
+    print(f"site-for-agents — {a.origin} — entity: {name or '?'}\n")
     for status, code, msg in results:
         print(f"  {status:4} {code}  {msg}")
     passed = sum(1 for s, _, _ in results if s == "PASS")

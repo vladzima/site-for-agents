@@ -16,7 +16,7 @@ import tempfile
 import threading
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-CHECK = os.path.join(HERE, "..", "skills", "agent-visible-site", "scripts", "check.py")
+CHECK = os.path.join(HERE, "..", "skills", "site-for-agents", "scripts", "check.py")
 
 PERSON = {
     "@context": "https://schema.org",

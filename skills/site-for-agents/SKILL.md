@@ -1,5 +1,5 @@
 ---
-name: agent-visible-site
+name: site-for-agents
 description: >
   Use when a personal website, portfolio, CV site, or "about me" page needs to
   be found, read, and quoted correctly by AI agents and answer engines
@@ -13,7 +13,7 @@ metadata:
   version: "0.1.0"
 ---
 
-# Agent-visible personal site
+# Site for agents
 
 An agent answering "who is X" or "who built Y" needs one fetch that returns
 plain text, a definitional first sentence, dated facts, and links that agree

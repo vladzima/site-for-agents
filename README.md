@@ -1,12 +1,12 @@
-# agent-visible-site
+# site-for-agents
 
-An agent skill for making a personal website findable, readable, and quotable
+An agent skill that makes a personal website findable, readable, and quotable
 by AI agents and answer engines (ChatGPT search, Claude, Perplexity, Google AI
 Mode, coding agents).
 
 Most advice sold as "GEO" does not move citation rate. What does, per the
 2026 log studies and papers collected in
-[references/levers.md](skills/agent-visible-site/references/levers.md):
+[references/levers.md](skills/site-for-agents/references/levers.md):
 an entity page with a definitional first sentence and dated facts, one
 identity line repeated on every profile, server-rendered content, allowed
 answer bots, and honest freshness. `llms.txt` is cheap insurance, not a lever.
@@ -19,13 +19,13 @@ instead of the canonical one), and a stdlib-only checker.
 ## Install
 
 ```bash
-npx skills add vladzima/agent-visible-site -g --all
+npx skills add vladzima/site-for-agents -g --all
 ```
 
 ## Check a site
 
 ```bash
-python3 skills/agent-visible-site/scripts/check.py https://example.com --name "Full Name"
+python3 skills/site-for-agents/scripts/check.py https://example.com --name "Full Name"
 ```
 
 Output is a scorecard, one line per check with the evidence:
