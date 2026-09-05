@@ -1,0 +1,21 @@
+{
+  "name": "agent-visible-site",
+  "version": "0.1.0",
+  "description": "Agent skill: make a personal website findable, readable, and quotable by AI agents and answer engines.",
+  "license": "MIT",
+  "homepage": "https://github.com/vladzima/agent-visible-site",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vladzima/agent-visible-site.git"
+  },
+  "keywords": [
+    "skills",
+    "agentskills",
+    "geo",
+    "llms.txt",
+    "ai-search"
+  ],
+  "scripts": {
+    "test": "python3 tests/test_check.py"
+  }
+}
