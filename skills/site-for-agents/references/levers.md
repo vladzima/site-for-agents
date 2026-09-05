@@ -119,3 +119,14 @@ https://www.wikidata.org/wiki/Wikidata:Notability
 
 `.well-known/agent-card.json` (A2A), `/.well-known/mcp-server`, `ai.txt`
 describe services, not people. No answer engine reads them for entity facts.
+
+## 16. WebMCP is actuation, not discovery
+
+Chrome's proposal (origin trial from Chrome 149; doc updated 2026-08-07) lets
+a page register JavaScript tools or annotate forms so an in-browser agent
+calls a tool instead of clicking through the DOM. Chrome's own limits:
+"primarily designed for local browser workflows with a human in the loop";
+"clients and browsers must visit a site directly to know if it has callable
+tools". It is JS-only, so answer engines never see it. Relevant only to pages
+with an action (booking, checkout, support forms).
+https://developer.chrome.com/docs/ai/webmcp

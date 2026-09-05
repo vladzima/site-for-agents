@@ -68,7 +68,10 @@ Evidence and sources: [references/levers.md](references/levers.md).
    Bing feeds ChatGPT search.
 
 Skip unless the site exposes a service: `.well-known` agent cards, MCP
-discovery, `ai.txt`. Skip Wikidata until independent references exist.
+discovery, `ai.txt`. WebMCP (Chrome, `navigator.modelContext` tools and
+annotated forms) is for in-browser actuation with a user present, not for
+being found or cited; add it only to a page with an action, such as a
+booking form. Skip Wikidata until independent references exist.
 `Accept: text/markdown` twins are optional; if served, send
 `Vary: Accept` so the CDN does not hand one variant to the other client.
 
